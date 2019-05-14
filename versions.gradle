@@ -1,0 +1,198 @@
+/**
+ *Source largely taken from this OS repo: https://github.com/googlesamples/android-architecture-components/blob/master/GithubBrowserSample/versions.gradle
+ * Thank you to everyone involved in this awesome OS project!
+ *
+ * In this file, we basically build a tree of deps in a very DRY way.
+ **/
+
+//ext is a way to add extra data key/value pairs to a gradle domain object. Since it has no prefix,
+//it is short hand for project.ext in this case.
+//[:] is groovy syntax for creating a "Map" Object, which is a collection of key/value pairs
+
+//create a map of key/value pairs, called deps (deps)
+ext.deps = [:]
+
+//def means we're making a local variable. We'll use this map to build our deps key/value
+//pairs below
+
+def versions = [:]
+versions.espresso = "3.1.0"
+versions.mockito = "2.13.0"
+versions.junit = "5.1.1"
+versions.test = "1.0.0"
+versions.runner = "1.1.0"
+versions.truth = "0.42"
+versions.lifecycle = "2.0.0-rc01"
+versions.room = "2.1.0-alpha03"
+versions.navigation = "2.1.0-alpha02"
+versions.dagger = "2.16"
+versions.support_test = "1.0.1"
+versions.design = "1.1.0-alpha06"
+versions.appcompat = "1.1.0-alpha04"
+versions.ktx_fragment = "1.0.0"
+versions.rec_view = "1.0.0"
+versions.constraint_layout = "2.0.0-alpha2"
+versions.coroutine_version = "1.0.0"
+versions.android_gradle_plugin = '3.4.0'
+versions.kotlin = "1.3.30"
+versions.jstarter= "1.0.0"
+versions.rxJava="2.2.4"
+versions.rxKotlin = "2.3.0"
+versions.rxAndroid="2.1.0"
+versions.circle_image = "3.0.0"
+versions.lottieVersion ="3.0.0"
+versions.picasso_version = "2.71828"
+versions.shimmer = '0.4.0'
+versions.multidex = '1.0.3'
+versions.image_copper='2.7.+'
+versions.paging = "2.1.0"
+versions.retrofit ='2.5.0'
+versions.retrofit_coroutines='0.9.2'
+versions.gson = "2.3"
+versions.okhttp = "3.12.0"
+versions.roboelectric = "4.2"
+versions.mockito_kotlin= "2.1.0"
+versions.leak_canary="2.0-alpha-1"
+versions.stetho = "1.5.0"
+versions.chuck = "1.1.0"
+versions.curved = "1.2.1"
+versions.indicator = '3.0.3'
+versions.epoxy="3.4.2"
+versions.timbre = "4.7.1"
+versions.expande_layout = '2.9.2'
+versions.scaleLayout = '1.2.1'
+versions.backdrop="0.1.6"
+versions.spinner = "2.0.0"
+
+def deps = [:]
+def android = [:]
+android.appcompat = "androidx.appcompat:appcompat:$versions.appcompat"
+android.fragment = "androidx.fragment:fragment:$versions.appcompat"
+android.recyclerview = "androidx.recyclerview:recyclerview:$versions.appcompat"
+android.design = "com.google.android.material:material:$versions.design"
+android.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+android.lifecycle_extensions = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+android.ktx_fragment = "androidx.fragment:fragment-ktx:$versions.ktx_fragment"
+android.picasso = "com.squareup.picasso:picasso:$versions.picasso_version"
+android.shimmer = "com.facebook.shimmer:shimmer:$versions.shimmer"
+android.lottie ="com.airbnb.android:lottie:$versions.lottieVersion"
+android.image_copper = "com.theartofdev.edmodo:android-image-cropper:$versions.image_copper"
+android.circle_imageview = "de.hdodenhof:circleimageview:$versions.circle_image"
+android.custom_fab = "com.github.clans:fab:$versions.custom_fab"
+android.multidex = "com.android.support:multidex:$versions.multidex"
+android.paging = "androidx.paging:paging-runtime:$versions.paging"
+android.navigation_ui= "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+android.navigation_fragment = "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+android.leak_canary= "com.squareup.leakcanary:leakcanary-android:$versions.leak_canary"
+android.curved_view = "com.github.developer-shivam:Crescento:$versions.curved"
+android.indicator ="com.tbuonomo.andrui:viewpagerdotsindicator:$versions.indicator"
+android.timbre = "com.jakewharton.timber:timber:$versions.timbre"
+android.expand_layou = "net.cachapa.expandablelayout:expandablelayout:$versions.expande_layout"
+android.recycler_tablayout= "com.nshmura:recyclertablayout:1.5.0"
+android.scalLayout = "com.github.iammert:ScalingLayout:$versions.scaleLayout"
+android.backdrop="ru.semper-viventem.backdrop:backdrop:$versions.backdrop"
+android.spinner = "com.github.ganfra:material-spinner:$versions.spinner"
+
+deps.android = android
+
+def room = [:]
+room.runtime = "androidx.room:room-runtime:$versions.room"
+room.compiler = "androidx.room:room-compiler:$versions.room"
+room.rxJava= "androidx.room:room-rxjava2:$versions.room"
+room.coroutines="androidx.room:room-coroutines:$versions.room"
+room.testing = "androidx.room:room-testing:$versions.room"
+deps.room = room
+
+def base = [:]
+base.jstarter = "com.github.team0se7en:JStarter:$versions.jstarter"
+base.domain = "com.github.team0se7en:JStarter:d-$versions.jstarter"
+base.presentation = "com.github.team0se7en:JStarter:p-$versions.jstarter"
+deps.base = base
+
+def dagger=[:]
+dagger.core= "com.google.dagger:dagger-android:$versions.dagger"
+dagger.support= "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.kaptCompiler= "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.kaptProcessor= "com.google.dagger:dagger-android-processor:$versions.dagger"
+deps.dagger=dagger
+
+def epoxy = [:]
+epoxy.core = "com.airbnb.android:epoxy:$versions.epoxy"
+epoxy.processor = "com.airbnb.android:epoxy-processor:$versions.epoxy"
+epoxy.databinding = "com.airbnb.android:epoxy-databinding:$versions.epoxy"
+epoxy.paging = "com.airbnb.android:epoxy-paging:$versions.epoxy"
+deps.epoxy = epoxy
+
+def retrofit =[:]
+retrofit.core = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.coroutine_support= "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$versions.retrofit_coroutines"
+retrofit.okhttp= "com.squareup.okhttp:okhttp:$versions.retrofit"
+retrofit.gson = "com.google.code.gson:gson:$versions.gson"
+retrofit.rxjava = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+retrofit.gson_retrofit = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.okhttp3 = "com.squareup.okhttp3:okhttp:$versions.okhttp"
+retrofit.logging ="com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+retrofit.mockweberver ="com.squareup.okhttp3:mockwebserver:$versions.okhttp"
+retrofit.stetho =  "com.facebook.stetho:stetho-okhttp3:$versions.stetho"
+retrofit.chuck_release =  "com.readystatesoftware.chuck:library-no-op:$versions.chuck"
+retrofit.chuck_debug ="com.readystatesoftware.chuck:library:$versions.chuck"
+retrofit.scalar_converter= "com.squareup.retrofit2:converter-scalars:$versions.scalars_converter"
+deps.retrofit = retrofit
+
+def test = [:]
+test.junit = "org.junit.jupiter:junit-jupiter-api:$versions.junit"
+test.kotlin_junit = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+test.mockk = "io.mockk:mockk:1.8.9.kotlin13"
+test.mock_kotlin= "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockito_kotlin"
+test.roboelectric = "org.robolectric:robolectric:$versions.roboelectric"
+deps.test = test
+
+def android_test = [:]
+android_test.core ="androidx.test:core:$versions.test"
+android_test.runner = "androidx.test:runner:$versions.runner"
+android_test.rules= "androidx.test:rules:$versions.runner"
+android_test.junit ="androidx.test.ext:junit:$versions.test"
+android_test.ext_truth="androidx.test.ext:truth:$versions.test"
+android_test.truth=  "com.google.truth:truth:$versions.truth"
+android_test.espresso_core=  "androidx.test.espresso:espresso-core:$versions.espresso"
+android_test.espresso_contrib= "androidx.test.espresso:espresso-contrib:$versions.espresso"
+android_test.espresso_intents="androidx.test.espresso:espresso-intents:$versions.espresso"
+android_test.espresso_accessibility = "androidx.test.espresso:espresso-accessibility:$versions.espresso"
+android_test.espresso_idling_res = "androidx.test.espresso:espresso-idling-resource:$versions.espresso"
+android_test.espresso_idling_concureent = "androidx.test.espresso.idling:idling-concurrent:$versions.espresso"
+deps.android_test =android_test
+
+def kotlin = [:]
+kotlin.kotlin_jre = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
+kotlin.kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+kotlin.coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutine_version"
+kotlin.coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutine_version"
+kotlin.rx2 = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$versions.coroutine_version"
+deps.kotlin = kotlin
+
+def rxjava =[:]
+rxjava.core="io.reactivex.rxjava2:rxjava:$versions.rxJava"
+rxjava.rxKotlin = "io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin"
+rxjava.rxAndroid= "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid"
+deps.rxJava = rxjava
+
+def build_versions = [:]
+build_versions.min_sdk = 19
+build_versions.target_sdk = 28
+ext.build_versions = build_versions
+
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+deps.kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+deps.navigation_safe_args = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+ext.deps = deps
+
+
+def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.maven { url 'https://jitpack.io' }
+    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    handler.maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+}
+
+ext.addRepos = this.&addRepos
