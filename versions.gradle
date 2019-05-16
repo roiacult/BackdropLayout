@@ -36,6 +36,7 @@ versions.coroutine_version = "1.0.0"
 versions.android_gradle_plugin = '3.4.0'
 versions.kotlin = "1.3.30"
 versions.jstarter= "1.0.0"
+versions.maven_plugin = '2.1'
 versions.rxJava="2.2.4"
 versions.rxKotlin = "2.3.0"
 versions.rxAndroid="2.1.0"
@@ -184,6 +185,7 @@ ext.build_versions = build_versions
 deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
 deps.kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
 deps.navigation_safe_args = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+deps.maven_plugin = "com.github.dcendents:android-maven-gradle-plugin:$versions.maven_plugin"
 ext.deps = deps
 
 
