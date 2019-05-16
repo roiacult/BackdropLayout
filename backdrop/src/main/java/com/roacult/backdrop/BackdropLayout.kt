@@ -12,6 +12,11 @@ import androidx.appcompat.widget.Toolbar
 class BackdropLayout @JvmOverloads constructor(context: Context, attribute : AttributeSet? = null, defStyleAttr: Int = 0)
     : FrameLayout(context,attribute,defStyleAttr){
 
+    /**
+     * set peek height
+     * this should be the height of front layout
+     * header
+     * */
     var peeckHeight = 0F
     var frontLayoutId = 0
     var backLayoutId = 0
@@ -73,18 +78,27 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
         typedArray.recycle()
     }
 
+    /**
+     * open : show back layout and swap front layout
+     * */
     fun open() {
         if(state == State.OPEN) return
         state = State.OPEN
         update(true)
     }
 
+    /**
+     * close : hide back layout and swap front layout
+     * */
     fun close(){
         if(state== State.CLOSE) return
         state= State.CLOSE
         update(true)
     }
 
+    /**
+     * change state of backdrop layout
+     * */
     fun switch() {
         if(state == State.OPEN) close()
         else open()
