@@ -16,6 +16,9 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     var frontLayoutId = 0
     var backLayoutId = 0
     var toolbarId = 0
+    private var frontLayout : View? = null
+    private var backLayout : View? = null
+    private var toolbar : Toolbar? = null
     var menuIcon : Int = R.drawable.menu
     var closeIcon : Int = R.drawable.close
     var duration   = DEFAULT_DURATION
@@ -27,7 +30,6 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     companion object {
         const val OLD_PARCE ="oldParce"
         const val STATE =  "BackDropState"
-        const val TRANSITION = "BackDropTransation"
         const val DEFAULT_DURATION = 400
     }
 
@@ -39,7 +41,6 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
         return  Bundle().apply {
             val p = super.onSaveInstanceState()
             putParcelable(OLD_PARCE,p)
-//            putParcelable(TRANSITION,) TODO
             putSerializable(STATE,state)
         }
     }
@@ -50,7 +51,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
             super.onRestoreInstanceState(bundle.getParcelable(OLD_PARCE))
             this@BackdropLayout.state = getSerializable(STATE) as State
         }
-        changeState()
+        update(false)
     }
 
     init {
@@ -71,54 +72,65 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     }
 
 
-    private fun changeState() {
-
-        val toolbar = rootView.findViewById<Toolbar>(toolbarId)
-
+    private fun update(withAnimation : Boolean) {
         when(state) {
             State.OPEN -> {
-                toolbar?.setNavigationIcon(closeIcon)
-                startTranslateAnimation(height-peeckHeight)
+                getToolbar()?.setNavigationIcon(closeIcon)
+                val transitionHeight = getTransitionHeight()
+                if(withAnimation) startTranslateAnimation(transitionHeight)
+                else getFrontLayout().translationY = transitionHeight
             }
 
             State.CLOSE -> {
-                toolbar?.setNavigationIcon(menuIcon)
-                startTranslateAnimation(0F)
+                getToolbar()?.setNavigationIcon(menuIcon)
+                if(withAnimation) startTranslateAnimation(0F)
+                else getFrontLayout().translationY = 0F
             }
         }
     }
 
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        getToolbar()?.apply {
+            setNavigationIcon( if(state == State.CLOSE) menuIcon else closeIcon )
+            setNavigationOnClickListener {
+//                switch() TODO
+            }
+        }
+    }
+
+    private fun getFrontLayout() : View {
+        if(frontLayout != null ) return frontLayout!!
+        frontLayout = findViewById(frontLayoutId) ?: throw Exception("please provide a valid id for front layout")
+        return frontLayout!!
+    }
+
+    private fun getBackLayout() : View {
+        if(backLayout != null) return backLayout!!
+        backLayout = findViewById(backLayoutId) ?: throw Exception("please provide a valid id for back layout")
+        return backLayout!!
+    }
+
+    private fun getToolbar() : Toolbar? {
+        if(toolbar != null) return toolbar
+        else if(toolbarId == 0) return null
+        toolbar = rootView.findViewById(toolbarId)
+        return toolbar
+    }
+
     private fun startTranslateAnimation (to: Float) {
-        val frontLayout = findViewById<View>(frontLayoutId) ?: throw Exception("please provide a valid id for front layout")
         animator.pause()
         animator.apply {
-            setFloatValues(frontLayout.translationY,to)
+            setFloatValues(getFrontLayout().translationY,to)
             duration = this@BackdropLayout.duration.toLong()
             addUpdateListener {
-                frontLayout.translationY = it.animatedValue as Float
+                getFrontLayout().translationY = it.animatedValue as Float
             }
             start()
         }
     }
 
-    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
-        super.onLayout(changed, left, top, right, bottom)
-        val backLayout : View = findViewById(backLayoutId) ?: throw Exception("please provide a valid id for back layout")
-        if( toolbarId != 0 ){
-            rootView.findViewById<Toolbar>(toolbarId)?.let{
-                it.setNavigationOnClickListener {
-//                    switch() TODO
-                }
-            }
-        }
-        changeState()
-
+    private fun getTransitionHeight(): Float {
+        return Math.min(getBackLayout().height.toFloat(),height - peeckHeight)
     }
-
-    private fun getBackLayoutHeight(): Int {
-        val backLayout : View = findViewById(backLayoutId) ?: throw Exception("please provide a valid id for back layout")
-        return Math.min(backLayout.height,height - peeckHeight.toInt())
-    }
-
-
 }
