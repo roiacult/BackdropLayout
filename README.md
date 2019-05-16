@@ -45,10 +45,10 @@ and specifie front_layout and back_layout attribute or it will throw an exceptio
             android:layout_height="match_parent">
         <include
                 android:id="@+id/includedBack"
-                layout="@layout/filter_product"/>
+                layout="@layout/back_layout"/>
         <include
                 android:id="@+id/includedFront"
-                layout="@layout/search_product"/>
+                layout="@layout/front_layout"/>
 
     </com.roacult.backdrop.BackdropLayout>
 ```
