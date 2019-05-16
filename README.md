@@ -56,7 +56,7 @@ and specifie front_layout and back_layout attribute or it will throw an exceptio
 
 `app:back_layout` : id of back layout (required)
 
-`app:toolbarId` : id of toolbarwhen this attribute is specified BackdropLayout 
+`app:toolbarId` : id of toolbar when this attribute is specified BackdropLayout 
 will automatically handle click event on toolbar and change state of backdroplayout 
 and navigation icon according to the click
 
@@ -69,6 +69,10 @@ is in open state
 `app:menuDrawable` : drawable shown when BackdropLayout is in open State
 
 `app:animationDuration` : duration of swiping front layout 
+
+for more information see simple app included un this repo
+(https://github.com/roiacult/BackdropLayout/tree/master/app)
+
 ## contact
 
 [![alt text][1.1]][1]
