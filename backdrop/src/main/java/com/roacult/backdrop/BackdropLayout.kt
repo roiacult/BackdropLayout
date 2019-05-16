@@ -1,4 +1,4 @@
-package com.roacult.kero.team7.backdrop
+package com.roacult.backdrop
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -23,7 +23,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     var closeIcon : Int = R.drawable.close
     var duration   = DEFAULT_DURATION
 
-    private var state : State  =State.CLOSE
+    private var state : State = State.CLOSE
 
     private val animator =  ValueAnimator()
 
@@ -68,7 +68,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
         toolbarId = typedArray.getResourceId(R.styleable.BackdropLayout_toolbarId,0)
         menuIcon = typedArray.getResourceId(R.styleable.BackdropLayout_menuDrawable,R.drawable.menu)
         closeIcon = typedArray.getResourceId(R.styleable.BackdropLayout_closeDrawable,R.drawable.close)
-        duration = typedArray.getInteger(R.styleable.BackdropLayout_animationDuration,DEFAULT_DURATION)
+        duration = typedArray.getInteger(R.styleable.BackdropLayout_animationDuration, DEFAULT_DURATION)
 
         typedArray.recycle()
     }

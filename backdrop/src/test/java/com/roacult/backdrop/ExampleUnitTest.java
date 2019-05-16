@@ -1,4 +1,4 @@
-package com.roacult.kero.team7.backdrop;
+package com.roacult.backdrop;
 
 import org.junit.Test;
 

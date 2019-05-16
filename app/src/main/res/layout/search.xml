@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-    <com.roacult.kero.team7.backdrop.BackdropLayout
+    <com.roacult.backdrop.BackdropLayout
             android:id="@+id/container"
             app:front_layout="@id/includedFront"
             app:back_layout="@id/includedBack"
@@ -29,5 +29,5 @@
                 android:id="@+id/includedFront"
                 layout="@layout/search_product"/>
 
-    </com.roacult.kero.team7.backdrop.BackdropLayout>
+    </com.roacult.backdrop.BackdropLayout>
 </LinearLayout>

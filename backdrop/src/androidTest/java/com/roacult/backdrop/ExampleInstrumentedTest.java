@@ -1,4 +1,4 @@
-package com.roacult.kero.team7.backdrop;
+package com.roacult.backdrop;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
