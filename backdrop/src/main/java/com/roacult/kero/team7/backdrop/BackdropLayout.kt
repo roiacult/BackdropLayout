@@ -51,7 +51,9 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
             super.onRestoreInstanceState(bundle.getParcelable(OLD_PARCE))
             this@BackdropLayout.state = getSerializable(STATE) as State
         }
-        update(false)
+        post {
+            update(false)
+        }
     }
 
     init {
