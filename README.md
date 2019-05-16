@@ -34,7 +34,7 @@ and specifie front_layout and back_layout attribute or it will throw an exceptio
 ```xml
     <com.roacult.backdrop.BackdropLayout
             android:id="@+id/container"
-             app:front_layout="@id/includedFront"
+            app:front_layout="@id/includedFront"
             app:back_layout="@id/includedBack"
             app:toolbarId="@id/toolbar"
             app:peekHeight="56dp"
@@ -53,15 +53,21 @@ and specifie front_layout and back_layout attribute or it will throw an exceptio
     </com.roacult.backdrop.BackdropLayout>
 ```
 `app:front_layout` : id of front layout  (required)
+
 `app:back_layout` : id of back layout (required)
+
 `app:toolbarId` : id of toolbarwhen this attribute is specified BackdropLayout 
 will automatically handle click event on toolbar and change state of backdroplayout 
 and navigation icon according to the click
+
 `app:peekHeight` : height of front layout header 
 if not specified BackdropLayout will swip front layout out of screen when BackdropLayout
 is in open state
+
 `app:menuDrawable` : drawable shown when BackdropLayout is in close State
+
 `app:menuDrawable` : drawable shown when BackdropLayout is in open State
+
 `app:animationDuration` : duration of swiping front layout 
 ## contact
 
