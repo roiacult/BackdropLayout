@@ -70,7 +70,7 @@ is in open state
 
 `app:animationDuration` : duration of swiping front layout 
 
-for more information see simple app included un this repo
+for more information see simple app included in this repo
 (https://github.com/roiacult/BackdropLayout/tree/master/app)
 
 ## contact
