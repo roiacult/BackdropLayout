@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">BackDropApp</string>
+    <string name="categorie">categories</string>
+    <string name="wilaya">State</string>
+    <string name="price">Price</string>
+    <string name="max">max</string>
+    <string name="min_rating">min rating</string>
+    <string name="promotions">promotions</string>
+    <string name="filter">filter</string>
+    <string name="reinitialize">reinitialize</string>
+
+    <string-array name="filter_options">
+        <item>Randome</item>
+        <item>Price(Low to High)</item>
+        <item>Price(High to Low)</item>
+    </string-array>
 </resources>

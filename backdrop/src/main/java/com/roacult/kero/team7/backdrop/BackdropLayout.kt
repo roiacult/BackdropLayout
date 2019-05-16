@@ -71,6 +71,22 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
         typedArray.recycle()
     }
 
+    fun open() {
+        if(state == State.OPEN) return
+        state = State.OPEN
+        update(true)
+    }
+
+    fun close(){
+        if(state== State.CLOSE) return
+        state= State.CLOSE
+        update(true)
+    }
+
+    fun switch() {
+        if(state == State.OPEN) close()
+        else open()
+    }
 
     private fun update(withAnimation : Boolean) {
         when(state) {
@@ -94,7 +110,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
         getToolbar()?.apply {
             setNavigationIcon( if(state == State.CLOSE) menuIcon else closeIcon )
             setNavigationOnClickListener {
-//                switch() TODO
+                switch()
             }
         }
     }

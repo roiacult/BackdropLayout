@@ -20,12 +20,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }
 }
 
 dependencies {
     implementation deps.kotlin.kotlin_jre
     implementation deps.android.appcompat
-    testImplementation deps.test.junit
-    androidTestImplementation deps.android_test.runner
-    androidTestImplementation deps.android_test.espresso_core
+    implementation deps.android.constraint_layout
+    implementation deps.android.spinner
+    implementation project(path: ':backdrop')
 }

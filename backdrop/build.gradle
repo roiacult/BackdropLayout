@@ -27,7 +27,4 @@ dependencies {
 
     implementation deps.kotlin.kotlin_jre
     implementation deps.android.appcompat
-    testImplementation deps.test.junit
-    androidTestImplementation deps.android_test.runner
-    androidTestImplementation deps.android_test.espresso_core
 }

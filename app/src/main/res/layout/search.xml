@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:background="?attr/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <com.roacult.kero.team7.backdrop.BackdropLayout
+            android:id="@+id/container"
+            app:front_layout="@id/includedFront"
+            app:back_layout="@id/includedBack"
+            app:toolbarId="@id/toolbar"
+            app:peekHeight="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <include
+                android:id="@+id/includedBack"
+                layout="@layout/filter_product"/>
+        <include
+                android:id="@+id/includedFront"
+                layout="@layout/search_product"/>
+
+    </com.roacult.kero.team7.backdrop.BackdropLayout>
+</LinearLayout>
