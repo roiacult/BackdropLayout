@@ -131,13 +131,13 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
         }
     }
 
-    private fun getFrontLayout() : View {
+    fun getFrontLayout() : View {
         if(frontLayout != null ) return frontLayout!!
         frontLayout = findViewById(frontLayoutId) ?: throw Exception("please provide a valid id for front layout")
         return frontLayout!!
     }
 
-    private fun getBackLayout() : View {
+    fun getBackLayout() : View {
         if(backLayout != null) return backLayout!!
         backLayout = findViewById(backLayoutId) ?: throw Exception("please provide a valid id for back layout")
         return backLayout!!
