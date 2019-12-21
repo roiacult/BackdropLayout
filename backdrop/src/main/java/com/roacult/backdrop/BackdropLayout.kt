@@ -2,6 +2,7 @@ package com.roacult.backdrop
 
 import android.animation.ValueAnimator
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.AttributeSet
@@ -27,6 +28,12 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     var menuIcon : Int = R.drawable.menu
     var closeIcon : Int = R.drawable.close
     var duration   = DEFAULT_DURATION
+
+    /**
+     * callback : will be called when ever
+     * backdrop layout change his state
+     * */
+    private var onBackdropChangeStateListener : ((State) -> Unit)? = null
 
     private var state : State = State.CLOSE
 
@@ -104,7 +111,17 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
         else open()
     }
 
+    /**
+     * setter for backdropChangeStateListener
+     * */
+    fun setOnBackdropChangeStateListener(listener : ((State) -> Unit)?){
+        onBackdropChangeStateListener = listener
+    }
+
     private fun update(withAnimation : Boolean) {
+        if(onBackdropChangeStateListener != null) {
+            onBackdropChangeStateListener!!.invoke(state)
+        }
         when(state) {
             State.OPEN -> {
                 getToolbar()?.setNavigationIcon(closeIcon)
@@ -151,7 +168,9 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     }
 
     private fun startTranslateAnimation (to: Float) {
-        animator.pause()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            animator.pause()
+        }
         animator.apply {
             setFloatValues(getFrontLayout().translationY,to)
             duration = this@BackdropLayout.duration.toLong()
