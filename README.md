@@ -70,6 +70,27 @@ is in open state
 
 `app:animationDuration` : duration of swiping front layout 
 
+
+```Kotlin
+// you can add listener
+backdropLayout.setOnBackdropChangeStateListener{
+    when(it){	
+       BackdropLayout.State.OPEN -> {
+            //TODO 
+       }
+       BackdropLayout.State.CLOSE -> { 
+	    //TODO 
+       }
+    } 	 
+}
+
+// you can access front and back layout
+backdropLayout.getFrontLayout()
+backdropLayout.getBackLayout()
+	
+```
+
+
 for more information see simple app included in this repo
 (https://github.com/roiacult/BackdropLayout/tree/master/app)
 
