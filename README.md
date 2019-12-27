@@ -66,7 +66,7 @@ is in open state
 
 `app:menuDrawable` : drawable shown when BackdropLayout is in close State
 
-`app:menuDrawable` : drawable shown when BackdropLayout is in open State
+`app:closeDrawable` : drawable shown when BackdropLayout is in open State
 
 `app:animationDuration` : duration of swiping front layout 
 
