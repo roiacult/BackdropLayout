@@ -119,9 +119,9 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     }
 
     private fun update(withAnimation : Boolean) {
-        if(onBackdropChangeStateListener != null) {
-            onBackdropChangeStateListener!!.invoke(state)
-        }
+
+        onBackdropChangeStateListener?.invoke(state)
+
         when(state) {
             State.OPEN -> {
                 getToolbar()?.setNavigationIcon(closeIcon)
