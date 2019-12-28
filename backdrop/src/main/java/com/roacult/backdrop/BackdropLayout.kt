@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.appcompat.widget.Toolbar
 
@@ -23,8 +24,10 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     var backLayoutId = 0
     var toolbarId = 0
     private var frontLayout : View? = null
+    private var frontLayoutDisabled:View? = null
     private var backLayout : View? = null
     private var toolbar : Toolbar? = null
+    private var disableWhenOpened  = true
     var menuIcon : Int = R.drawable.menu
     var closeIcon : Int = R.drawable.close
     var duration   = DEFAULT_DURATION
@@ -79,6 +82,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
         peeckHeight = typedArray.getDimension(R.styleable.BackdropLayout_peekHeight,0F)
         toolbarId = typedArray.getResourceId(R.styleable.BackdropLayout_toolbarId,0)
         menuIcon = typedArray.getResourceId(R.styleable.BackdropLayout_menuDrawable,R.drawable.menu)
+        disableWhenOpened = typedArray.getBoolean(R.styleable.BackdropLayout_disable_when_open , true)
         closeIcon = typedArray.getResourceId(R.styleable.BackdropLayout_closeDrawable,R.drawable.close)
         duration = typedArray.getInteger(R.styleable.BackdropLayout_animationDuration, DEFAULT_DURATION)
 
@@ -91,6 +95,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     fun open() {
         if(state == State.OPEN) return
         state = State.OPEN
+        if(disableWhenOpened) disableFronView()
         update(true)
     }
 
@@ -100,6 +105,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     fun close(){
         if(state== State.CLOSE) return
         state= State.CLOSE
+        if(disableWhenOpened) enableFrontView()
         update(true)
     }
 
@@ -183,5 +189,29 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
 
     private fun getTransitionHeight(): Float {
         return Math.min(getBackLayout().height.toFloat(),height - peeckHeight)
+    }
+
+
+
+    private fun disableFronView(){
+        val frontLayout = getFrontLayout()
+        updateFrontView(frontLayout , false)
+    }
+
+    private fun enableFrontView(){
+        val frontLayout = getFrontLayout()
+        updateFrontView(frontLayout , true)
+    }
+    private fun updateFrontView(frontView :View , enable:Boolean ){
+        if( frontView is ViewGroup){
+            updateFrontViewChilds(frontView , enable)
+        }
+        frontView.isEnabled = enable
+        getFrontLayout().alpha =if(enable) 1.0f else 0.95f
+    }
+    private fun updateFrontViewChilds(layout:ViewGroup , enable:Boolean ){
+        for ( i in 0 until layout.childCount){
+            layout.getChildAt(i).isEnabled = enable
+        }
     }
 }

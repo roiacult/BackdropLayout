@@ -8,5 +8,6 @@
         <attr name="menuDrawable" format="reference"/>
         <attr name="closeDrawable" format="reference"/>
         <attr name="animationDuration" format="integer"/>
+        <attr name="disable_when_open" format="boolean"/>
     </declare-styleable>
 </resources>
