@@ -135,6 +135,8 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
                 else {
                     getFrontLayout().translationY = transitionHeight
                     getDisablingView().translationY = transitionHeight
+                    getDisablingView().alpha = calculateAlphaVlue(transitionHeight)
+                    getDisablingView().visible(true)
                 }
             }
 
@@ -144,6 +146,8 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
                 else {
                     getFrontLayout().translationY = 0F
                     getDisablingView().translationY = 0F
+                    getDisablingView().alpha = 0F
+                    getDisablingView().visible(false)
                 }
             }
         }
