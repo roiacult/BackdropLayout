@@ -126,7 +126,6 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
 
         onBackdropChangeStateListener?.invoke(state)
 
-        if(disableWhenOpened) disableFrontLayout(state == State.OPEN)
         when(state) {
             State.OPEN -> {
                 getToolbar()?.setNavigationIcon(closeIcon)
@@ -134,9 +133,11 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
                 if(withAnimation) startTranslateAnimation(transitionHeight)
                 else {
                     getFrontLayout().translationY = transitionHeight
-                    getDisablingView().translationY = transitionHeight
-                    getDisablingView().alpha = calculateAlphaVlue(transitionHeight)
-                    getDisablingView().visible(true)
+                    if(disableWhenOpened) {
+                        getDisablingView().translationY = transitionHeight
+                        getDisablingView().alpha = calculateAlphaVlue(transitionHeight)
+                        getDisablingView().visible(true)
+                    }
                 }
             }
 
@@ -145,9 +146,11 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
                 if(withAnimation) startTranslateAnimation(0F)
                 else {
                     getFrontLayout().translationY = 0F
-                    getDisablingView().translationY = 0F
-                    getDisablingView().alpha = 0F
-                    getDisablingView().visible(false)
+                    if(disableWhenOpened) {
+                        getDisablingView().translationY = 0F
+                        getDisablingView().alpha = 0F
+                        getDisablingView().visible(false)
+                    }
                 }
             }
         }
@@ -210,9 +213,11 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
             addUpdateListener {
                 val translation = it.animatedValue as Float
                 getFrontLayout().translationY = translation
-                getDisablingView().visible(translation != 0F )
-                getDisablingView().translationY = translation
-                getDisablingView().alpha = calculateAlphaVlue(translation)
+                if(disableWhenOpened) {
+                    getDisablingView().visible(translation != 0F)
+                    getDisablingView().translationY = translation
+                    getDisablingView().alpha = calculateAlphaVlue(translation)
+                }
             }
             start()
         }
@@ -224,9 +229,5 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
 
     private fun getTransitionHeight(): Float {
         return Math.min(getBackLayout().height.toFloat(),height - peeckHeight)
-    }
-
-    private fun disableFrontLayout(disable:Boolean ){
-        //TODO disable
     }
 }

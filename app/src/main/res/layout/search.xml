@@ -20,6 +20,7 @@
             app:toolbarId="@id/toolbar"
             app:peekHeight="200dp"
             app:menuDrawable="@drawable/filter_variant"
+            app:disable_when_open="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <include
