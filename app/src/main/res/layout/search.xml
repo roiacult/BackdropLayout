@@ -18,7 +18,7 @@
             app:front_layout="@id/includedFront"
             app:back_layout="@id/includedBack"
             app:toolbarId="@id/toolbar"
-            app:peekHeight="56dp"
+            app:peekHeight="200dp"
             app:menuDrawable="@drawable/filter_variant"
             android:layout_width="match_parent"
             android:layout_height="match_parent">

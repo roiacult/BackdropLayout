@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/frontLayout"
+        android:background="#DDDDDD"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -34,8 +35,16 @@
                 app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:background="#DDDDDD"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:background="#DDDDDD"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"/>-->
+    <TextView
+            android:id="@+id/bla"
+            android:text="this is front layout"
+            android:textColor="#000"
+            android:layout_margin="32dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 </LinearLayout>
