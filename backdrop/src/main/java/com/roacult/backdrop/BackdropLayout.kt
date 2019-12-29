@@ -190,6 +190,10 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
             disablingView!!.layoutParams = params
             disablingView!!.setBackgroundColor(Color.WHITE)
             disablingView!!.alpha = 0F
+            disablingView!!.isClickable = true
+            disablingView!!.setOnClickListener {
+                close()
+            }
             disablingView!!.visibility = View.GONE
             this.addView(disablingView)
             disablingView!!
@@ -223,7 +227,6 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     }
 
     private fun disableFrontLayout(disable:Boolean ){
-        getDisablingView()
-//        getDisablingView().visible(disable)
+        //TODO disable
     }
 }
