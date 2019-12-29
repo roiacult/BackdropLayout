@@ -38,6 +38,7 @@ and specifie front_layout and back_layout attribute or it will throw an exceptio
             app:back_layout="@id/includedBack"
             app:toolbarId="@id/toolbar"
             app:peekHeight="56dp"
+            app:disable_when_open="true"
             app:menuDrawable="@drawable/ic_menu"
             app:closeDrawable="@drawable/ic_close"
             app:animationDuration="400"
@@ -70,6 +71,7 @@ is in open state
 
 `app:animationDuration` : duration of swiping front layout 
 
+`app:disable_when_open` : disable front layout and adding white (Transparent) view above front layout 
 
 ```Kotlin
 // you can add listener
