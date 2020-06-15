@@ -7,9 +7,11 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.widget.Toolbar
+import top.defaults.drawabletoolbox.DrawableBuilder
 
 class BackdropLayout @JvmOverloads constructor(context: Context, attribute : AttributeSet? = null, defStyleAttr: Int = 0)
     : FrameLayout(context,attribute,defStyleAttr){
@@ -193,7 +195,19 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
             disablingView = View(context)
             val params = LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
             disablingView!!.layoutParams = params
-            disablingView!!.setBackgroundColor(Color.WHITE)
+
+            Log.v("blahblah","frontHeaderRadius $frontHeaderRadius")
+            val drawable = DrawableBuilder().rectangle().apply {
+                cornerRadii(
+                    frontHeaderRadius,
+                    frontHeaderRadius,
+                    0,
+                    0
+                )
+                solidColor(Color.WHITE)
+            }.build()
+
+            disablingView!!.background = drawable
             disablingView!!.alpha = 0F
             disablingView!!.isClickable = true
             disablingView!!.setOnClickListener {

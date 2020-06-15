@@ -21,6 +21,7 @@
             app:peekHeight="200dp"
             app:menuDrawable="@drawable/filter_variant"
             app:disable_when_open="true"
+            app:front_header_radius="16dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <include

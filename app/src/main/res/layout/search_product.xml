@@ -3,7 +3,6 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/frontLayout"
-        android:background="#DDDDDD"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -21,7 +20,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp"
-                android:entries="@array/filter_options"/>
+                android:entries="@array/filter_options"
+                android:layout_marginLeft="8dp" />
         <ImageButton
                 android:id="@+id/gridBtn"
                 android:background="#00FFFFFF"
@@ -35,10 +35,10 @@
                 app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:background="#DDDDDD"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"/>-->
+    <View
+            android:background="#DDDDDD"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     <TextView
             android:id="@+id/bla"
             android:text="this is front layout"
