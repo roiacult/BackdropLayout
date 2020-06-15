@@ -31,6 +31,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     var menuIcon : Int = R.drawable.menu
     var closeIcon : Int = R.drawable.close
     var duration   = DEFAULT_DURATION
+    var frontHeaderRadius : Int = 0
 
     /**
      * callback : will be called when ever
@@ -85,6 +86,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
         disableWhenOpened = typedArray.getBoolean(R.styleable.BackdropLayout_disable_when_open , true)
         closeIcon = typedArray.getResourceId(R.styleable.BackdropLayout_closeDrawable,R.drawable.close)
         duration = typedArray.getInteger(R.styleable.BackdropLayout_animationDuration, DEFAULT_DURATION)
+        frontHeaderRadius = typedArray.getDimensionPixelSize(R.styleable.BackdropLayout_front_header_radius,0)
 
         typedArray.recycle()
     }

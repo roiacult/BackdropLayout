@@ -93,6 +93,7 @@ android.recycler_tablayout= "com.nshmura:recyclertablayout:1.5.0"
 android.scalLayout = "com.github.iammert:ScalingLayout:$versions.scaleLayout"
 android.backdrop="ru.semper-viventem.backdrop:backdrop:$versions.backdrop"
 android.spinner = "com.github.ganfra:material-spinner:$versions.spinner"
+android.drawableToolbox = "com.github.duanhong169:drawabletoolbox:1.0.7"
 
 deps.android = android
 

@@ -28,6 +28,7 @@ android {
 
 dependencies {
 
+    implementation deps.android.drawableToolbox
     implementation deps.kotlin.kotlin_jre
     implementation deps.android.appcompat
 }

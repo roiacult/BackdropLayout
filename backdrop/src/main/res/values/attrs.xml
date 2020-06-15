@@ -9,5 +9,6 @@
         <attr name="closeDrawable" format="reference"/>
         <attr name="animationDuration" format="integer"/>
         <attr name="disable_when_open" format="boolean"/>
+        <attr name="front_header_radius" format="dimension"/>
     </declare-styleable>
 </resources>

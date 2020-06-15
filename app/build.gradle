@@ -27,9 +27,10 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':backdrop')
+
     implementation deps.kotlin.kotlin_jre
     implementation deps.android.appcompat
     implementation deps.android.constraint_layout
     implementation deps.android.spinner
-    implementation project(path: ':backdrop')
 }
