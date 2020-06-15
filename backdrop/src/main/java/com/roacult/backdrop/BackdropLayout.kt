@@ -244,6 +244,6 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
     }
 
     private fun getTransitionHeight(): Float {
-        return Math.min(getBackLayout().height.toFloat(),height - peeckHeight)
+        return getBackLayout().height.toFloat().coerceAtMost(height - peeckHeight)
     }
 }
