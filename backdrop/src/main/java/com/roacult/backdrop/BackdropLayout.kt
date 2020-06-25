@@ -85,7 +85,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
         peeckHeight = typedArray.getDimension(R.styleable.BackdropLayout_peekHeight,0F)
         toolbarId = typedArray.getResourceId(R.styleable.BackdropLayout_toolbarId,0)
         menuIcon = typedArray.getResourceId(R.styleable.BackdropLayout_menuDrawable,R.drawable.menu)
-        disableWhenOpened = typedArray.getBoolean(R.styleable.BackdropLayout_disable_when_open , true)
+        disableWhenOpened = typedArray.getBoolean(R.styleable.BackdropLayout_disable_when_open , false)
         closeIcon = typedArray.getResourceId(R.styleable.BackdropLayout_closeDrawable,R.drawable.close)
         duration = typedArray.getInteger(R.styleable.BackdropLayout_animationDuration, DEFAULT_DURATION)
         frontHeaderRadius = typedArray.getDimensionPixelSize(R.styleable.BackdropLayout_front_header_radius,0)
