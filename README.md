@@ -73,6 +73,9 @@ is in open state
 
 `app:disable_when_open` : disable front layout and adding white (Transparent) view above front layout 
 
+`app:front_header_radius` : if your front layout header have corner radius and you set `app:disable_when_open` to true you should set this attribute to same radius value of your front layout header to prevent disablingView (White Transparent above FrontLayout) from overlapping the Frontlayout
+
+
 ```Kotlin
 // you can add listener
 backdropLayout.setOnBackdropChangeStateListener{
