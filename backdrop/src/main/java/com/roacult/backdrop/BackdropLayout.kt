@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isVisible
 import top.defaults.drawabletoolbox.DrawableBuilder
 
 class BackdropLayout @JvmOverloads constructor(context: Context, attribute : AttributeSet? = null, defStyleAttr: Int = 0)
@@ -140,7 +141,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
                     if(disableWhenOpened) {
                         getDisablingView().translationY = transitionHeight
                         getDisablingView().alpha = calculateAlphaVlue(transitionHeight)
-                        getDisablingView().visible(true)
+                        getDisablingView().isVisible = true
                     }
                 }
             }
@@ -153,7 +154,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
                     if(disableWhenOpened) {
                         getDisablingView().translationY = 0F
                         getDisablingView().alpha = 0F
-                        getDisablingView().visible(false)
+                        getDisablingView().isVisible = false
                     }
                 }
             }
@@ -230,7 +231,7 @@ class BackdropLayout @JvmOverloads constructor(context: Context, attribute : Att
                 val translation = it.animatedValue as Float
                 getFrontLayout().translationY = translation
                 if(disableWhenOpened) {
-                    getDisablingView().visible(translation != 0F)
+                    getDisablingView().isVisible = translation != 0F
                     getDisablingView().translationY = translation
                     getDisablingView().alpha = calculateAlphaVlue(translation)
                 }

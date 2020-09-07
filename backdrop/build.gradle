@@ -23,6 +23,10 @@ android {
         }
     }
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
@@ -30,4 +34,5 @@ dependencies {
     implementation deps.android.drawableToolbox
     implementation deps.kotlin.kotlin_jre
     implementation deps.android.appcompat
+    implementation deps.android.androidx_core
 }
